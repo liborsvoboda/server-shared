@@ -1,0 +1,211 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+    top: 0px !important;
+}
+
+html {
+    display: table;
+    width: 100%;
+}
+
+iframe {
+    display: block;
+    border: none; 
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    display: table-cell;
+    text-align: center;
+    vertical-align: middle;
+}
+
+.supertop {
+    z-index: 1000000 !important;
+}
+
+
+.skiptranslate { 
+    /* display:none !important; */
+    /*  zoom: 1.2; */
+}
+
+.audio-player {
+    zoom: 0.7;
+    background-color: transparent !important;
+}
+
+#\:1\.container {
+    visibility: hidden !important;
+}
+
+.zoom-12 {
+    zoom: 1.2 !important;
+}
+
+.zoom-11 {
+    zoom: 1.1 !important;
+}
+
+.zoom-13 {
+    zoom: 1.3 !important;
+}
+
+.zoom-09 {
+    zoom: 0.9 !important;
+}
+
+.zoom-08 {
+    zoom: 0.8 !important;
+}
+
+.zoom-07 {
+    zoom: 0.7 !important;
+}
+
+.zoom-05 {
+    zoom: 0.5 !important;
+}
+
+[data-role=window] {
+    height: calc(100% - 12px) !important
+}
+
+.window-area {
+    background: url("../../../images/anime-background-images-1.jpg") center center no-repeat;
+    background-size: cover;
+}
+
+#charm {
+    height: calc(100vh - 40px);
+    width: 396px;
+    background-color: #1F4F5D;
+}
+
+
+#log-container {
+    overflow: auto;
+    height: 250px;
+    font-size: 12px;
+    text-wrap: pretty;
+}
+
+.log-warn {
+    color: orange;
+    font-size: 12px;
+    text-wrap: pretty;
+}
+
+.log-error {
+    color: red;
+    font-size: 12px;
+    text-wrap: pretty;
+}
+
+.log-info {
+    color: skyblue;
+    font-size: 12px;
+    text-wrap: pretty;
+}
+
+.log-log {
+    color: silver;
+    font-size: 12px;
+    text-wrap: pretty;
+}
+
+.log-warn, .log-error {
+    font-weight: bold;
+    font-size: 12px;
+    text-wrap: pretty;
+}
+
+.tile-app .badge-bottom, .tile-large .badge-bottom, .tile-medium .badge-bottom, .tile-small .badge-bottom, .tile-wide .badge-bottom {
+    right: 0px !important;
+    top: 0 !important;
+    bottom: auto !important;
+    width: 100%;
+    background-color: transparent !important;
+}
+
+
+.iScrollIndicator {
+    width: 5px !important;
+    border: none !important;
+}
+
+.opc-05 {
+    opacity: 0.5 !important;
+}
+
+.w-50px {
+    width: 100px !important;
+}
+
+.w-100px {
+    min-width: 100px !important;
+    width: 100px !important;
+    max-width: 100px !important;
+}
+
+.w-150px {
+    min-width: 150px !important;
+    width: 150px !important;
+    max-width: 150px !important;
+}
+
+.w-200px {
+    min-width: 200px !important;
+    width: 200px !important;
+    max-width: 200px !important;
+}
+
+.w-300px {
+    min-width: 300px !important;
+    width: 300px !important;
+    max-width: 300px !important;
+}
+
+
+.w-20 {
+    width: 20% !important;
+    min-width: 20% !important;
+    max-width: 20% !important;
+}
+
+.unstyled-link {
+    color: inherit;
+    text-decoration: inherit;
+}
+
+.linktext {
+    text-decoration: none;
+    color: inherit;
+}
+
+    .linktext:hover {
+        text-decoration: none;
+        color: inherit;
+    }
+
+.video-hero .YTPOverlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    opacity: 0.75;
+    background: #499bea;
+    /*     background: -moz-linear-gradient(-45deg, #499bea 0%, #798eea 100%);
+    background: -webkit-gradient(left top, right bottom, color-stop(0%, #499bea), color-stop(100%, #798eea));
+    background: -webkit-linear-gradient(-45deg, #499bea 0%, #798eea 100%);
+    background: -o-linear-gradient(-45deg, #499bea 0%, #798eea 100%);
+    background: -ms-linear-gradient(-45deg, #499bea 0%, #798eea 100%);
+    background: -webkit-linear-gradient(315deg, #499bea 0%, #798eea 100%);
+    background: -o-linear-gradient(315deg, #499bea 0%, #798eea 100%);
+    background: linear-gradient(135deg, #499bea 0%, #798eea 100%); */
+    filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#499bea', endColorstr='#798eea', GradientType=1 );
+    z-index: 1;
+}

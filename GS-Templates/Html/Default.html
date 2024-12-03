@@ -1,0 +1,103 @@
+﻿<!DOCTYPE html>
+<html class=" dark-side">
+<head>
+	<title>My Metro App</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="author" content="Libor Svoboda">
+    <link rel="shortcut icon" href="./favicon.ico" type="image/x-icon">
+    <link rel="icon" href="./favicon.ico" type="image/x-icon">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <link href="./metro5/metro.css" rel="stylesheet">
+    <link href="./metro5/icons.css" rel="stylesheet">
+	
+    <script type="text/javascript" src="./metro/jquery/js/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" src="./metro/addons/js/js.cookie.min.js"></script>
+    <script type="text/javascript" src="./metro/metro.all.js"></script>
+    <script type="text/javascript" src="./metro/GS-Library/global-storage.js"></script>
+    <script type="text/javascript" src="./metro/GS-Library/global-behavior.js"></script>
+	<script type="text/javascript" src="./metro/GS-Library/global-control.js"></script>
+	<script type="text/javascript" src="./metro/GS-Library/global-function.js"></script>
+	<script type="text/javascript" src="./metro/GS-Library/global-object.js"></script>
+	<script type="text/javascript" src="./metro/GS-Library/global-PrintFileImage.js"></script>
+	<script type="text/javascript" src="./metro/GS-Library/global-system.js"></script>
+	<script type="text/javascript" src="./metro/GS-Library/global-tools.js"></script>
+	
+    <script type="text/javascript" src="./metro/jquery/js/jquery.printElement.js"></script>
+    <script type="text/javascript" src="./metro/addons/js/jspdf.js"></script>
+
+    <!-- Google Translation -->
+	<script type="text/javascript" src="//translate.google.com/translate_a/element.js?cb=GoogleTranslateElementInit"></script>
+</head>
+<body class="w-100 h-100" style="height:100%;">
+    <div id="AppPanel" class="mt-2 mb-5 panel container drop-shadow">
+        <div class="row mt-5 mb-5 text-center w-100">
+			<div class="w-50 d-flow text-left">
+				<button class="button success shadowed mr-2" @click=GetData("statuses",true);>Statusy</button>
+				<button class="button success shadowed mr-2" @click=GetData("positions",true);>Pozícia</button>
+				<button class="button success shadowed mr-2" @click=GetData("persons",true);>Osoby</button>
+				<button class="button success shadowed mr-2" @click=GetData("projects",true);>Projekty</button>
+				<button class="button success shadowed mr-2" @click=GetData("tasks",true);>Úlohy</button>
+			</div>
+
+			<div class="w-25 d-flow text-right text-bold mif-3x">test</div>
+
+			<div class="w-25 d-flow text-right text-right">
+				<span class="mif-tools mif-3x fg-github mr-2 c-pointer" @click=ShowToolPanel(); title="Engine STools"></span>
+			</div>
+		</div>
+
+		<table id="DataTable"
+			class="table drop-shadow" data-role="table" data-cls-component="mt-10" data-show-activity="true"
+			data-rows="30" data-pagination="true" data-show-all-pages="false" data-check="true" data-check-style="1"
+			data-check-type="radio" data-on-check-click="EditRecord()" data-use-current-slice="true">
+			<THEAD id="tableHeader">
+				<TR>
+					<TH data-sortable="true">Id</TH>
+					<TH data-sortable="true">Názov</TH>
+				</TR>
+			</THEAD>
+		</table>
+
+
+		<div id="charmPanel" data-role="charms" style="width:350px !important;height:calc(100% - 45px) !important;" data-position="right" data-opacity=".5">
+			<textarea id="NewMessage" data-role="textarea" data-auto-size="true" data-max-height="150" class="primary" placeholder="Zanechte mi Zprávu...."></textarea>
+			<button id="SendMessageBtn" class="button success mb-4" onclick="SendMessage()">Save Message</button>
+			<div id="MessageBox" class="d-block m-0 p-0" style="overflow-y: scroll;max-height: 500px;"></div>
+		</div>
+
+		<!-- News Panel -->
+		<div id="NewsInfoBox" class="info-box" data-role="infobox" data-type="default" data-width="800" data-height="600" style="visibility:hidden;">
+			<span class="button square closer"></span>
+			<div class="info-box-content" style="overflow-y:auto;">
+				<div class="d-flex row ">
+					<div id="NewsListBox" class="d-block m-0 p-0" style="overflow-y: scroll;height:550px;max-height: 550px;"></div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div class="pos-absolute d-flex text-center" style="bottom:10px;width:100%;left:10px;">
+        <a class="button m-1 text-bold bg-lightblue c-pointer shadowed" onclick=ShowMessagePanel()>Poslat Zprávu</a>
+        <a class="button m-1 text-bold bg-lightblue c-pointer shadowed" onclick=DownloadFrameHtmlElement();>Stáhni si Html</a>
+        <a class="button m-1 text-bold bg-lightblue c-pointer shadowed" onclick=ShowFrameSource();>Zobraz si Kód</a>
+        <a class="button m-1 text-bold bg-lightblue c-pointer shadowed" onclick=ChangeSource('./Downloads/');>Mrkni do DovnLoad</a>
+        <a class="button m-1 text-bold bg-lightblue c-pointer shadowed" onclick=GetNewsList();>Zobrazit Novinky</a>
+        <a class="button m-1 text-bold bg-lightblue c-pointer shadowed" onclick=ChangeSource('./server-provider/AwesomeCode/AwesomeJS/projects.html');>Dá se Cokoliv a Snadno</a>
+        <a class="button m-1 text-bold bg-lightblue c-pointer shadowed" onclick=window.open("https://calendar.app.google/7GtS8wkYG9HoUVAB7");>Rezervace Schůzky</a>
+	</div>
+
+	<script>
+		showPageLoading();
+		$(document).ready(function () {
+			//setTimeout(() => { Mermaid();hidePageLoading(); }, 3000);
+			ShowMessagePanel(); 
+            GetMessages();
+            googleTranslateElementInit();
+	hidePageLoading();
+        });
+	</script>
+</body>
+</html>
+

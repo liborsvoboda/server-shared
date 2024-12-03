@@ -1,0 +1,24 @@
+
+
+<h1>RESPONSIVE FRAME ON FULL PAGE </h1>
+<style>
+	html, body {
+		height: 100%;
+		margin: 0;         /* Reset default margin on the body element */
+	}
+	iframe {
+		display: block;       /* iframes are inline by default */
+		border: none;         /* Reset default border */
+		width: 100%;
+		height: 100%;
+	}
+</style>
+
+<script type="text/javascript">
+function calcHeight(iframeElement){
+    var the_height=  iframeElement.contentWindow.document.body.scrollHeight;
+    iframeElement.height=  the_height;
+}
+</script>
+<iframe src="./page.html" onLoad="calcHeight(this);" frameborder="0" scrolling="no" id="the_iframe" width="100%" ></iframe>
+
